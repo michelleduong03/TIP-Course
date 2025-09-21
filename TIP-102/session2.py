@@ -1,0 +1,214 @@
+# problem 1
+
+'''
+
+Write a function reverse_sentence() that takes in a string sentence and 
+returns the sentence with the order of the words reversed. The sentence 
+will contain only alphabetic characters and spaces to separate the words. 
+If there is only one word in the sentence, the function should return the 
+original string.
+
+'''
+def reverse_sentence(sentence):
+    words = sentence.split()
+    if len(words) == 1:       
+        return sentence
+    
+    return " ".join(words[::-1])
+
+sentence = "tubby little cubby all stuffed with fluff"
+reverse_sentence(sentence)
+
+sentence = "Pooh"
+reverse_sentence(sentence)
+
+# problem 2
+
+def goldilocks_approved(nums):
+    if len(nums) < 3: 
+        return -1
+    
+    mn, mx = min(nums), max(nums)
+    
+    for num in nums:
+        if num != mn and num != mx:
+            return num
+    return -1
+
+nums = [3, 2, 1, 4]
+goldilocks_approved(nums)
+
+nums = [1, 2]
+goldilocks_approved(nums)
+
+nums = [2, 1, 3]
+goldilocks_approved(nums)
+
+# problem 3
+
+def delete_minimum_elements(hunny_jar_sizes):
+    res = []
+    
+    while hunny_jar_sizes:
+        minimum = min(hunny_jar_sizes)
+        res.append(minimum)
+        hunny_jar_sizes.remove(minimum)
+    
+    print(res)
+
+hunny_jar_sizes = [5, 3, 2, 4, 1]
+delete_minimum_elements(hunny_jar_sizes)
+
+hunny_jar_sizes = [5, 2, 1, 8, 2]
+delete_minimum_elements(hunny_jar_sizes)
+
+# problem 4
+
+def sum_of_digits(num):
+    total = 0
+    while num > 0:
+        total += num % 10
+        num //= 10
+    return total
+
+num = 423
+sum_of_digits(num)
+
+num = 4
+sum_of_digits(num)
+
+# problem 5
+
+def final_value_after_operations(operations):
+    tigger = 1
+    for op in operations:
+        if op in ['bouncy', 'flouncy']:
+            tigger += 1
+        elif op in ['trouncy', 'pouncy']:
+            tigger -= 1
+    print(tigger)
+
+operations = ["trouncy", "flouncy", "flouncy"]
+final_value_after_operations(operations)
+
+operations = ["bouncy", "bouncy", "flouncy"]
+final_value_after_operations(operations)
+
+# problem 6
+
+def is_acronym(words, s):
+    if len(words) != len(s):
+        return False
+    
+    for word, char in zip(words, s):
+        if word[0] != char:
+            return False
+    return True
+
+def is_acronym(words, s):
+    if len(words) != len(s):
+        return False
+
+    for i in range(len(words)):
+        if words[i][0] != s[i]:
+            return False
+    return True
+
+words = ["christopher", "robin", "milne"]
+s = "crm"
+is_acronym(words, s)
+
+# problem 7
+
+def make_divisible_by_3(nums):
+    total_ops = 0
+    for num in nums:
+        remainder = num % 3
+        total_ops += min(remainder, 3 - remainder)
+    return total_ops
+
+nums = [1, 2, 3, 4]
+make_divisible_by_3(nums)
+
+nums = [3, 6, 9]
+make_divisible_by_3(nums)
+
+# problem 8
+
+def exclusive_elemts(lst1, lst2):
+    result = []
+    for x in lst1:
+        if x not in lst2:
+            result.append(x)
+    for x in lst2:
+        if x not in lst1:
+            result.append(x)
+    return result
+
+lst1 = ["pooh", "roo", "piglet"]
+lst2 = ["piglet", "eeyore", "owl"]
+exclusive_elemts(lst1, lst2)
+
+lst1 = ["pooh", "roo"]
+lst2 = ["piglet", "eeyore", "owl", "kanga"]
+exclusive_elemts(lst1, lst2)
+
+lst1 = ["pooh", "roo", "piglet"]
+lst2 = ["pooh", "roo", "piglet"]
+exclusive_elemts(lst1, lst2)
+
+# problem 9
+
+# problem 10
+
+# problem 11
+
+# problem 12
+
+
+# '''
+# x can be a non negative integer
+# build up a string
+# based on x
+
+# need a loop -> for loop going up to x
+
+# empty result string
+# building up result string
+
+# append " batman!"
+# return the output
+# '''
+
+# def nanana_batman(x):
+#     res = ""
+
+#     for i in range(x):
+#         res += "na"
+
+#     res += " batman!"
+    
+#     return res
+
+# x = 6
+# print(nanana_batman(x))
+
+
+# '''
+
+# binary array is an array with only 0s and 1s
+
+# for loop -> conditional
+# var to count 1s
+# one that counts streak
+# one that counts max streak
+# if we have 1, update recent
+# only when greater than curMax
+
+# maxStreak = max(recentStreak, maxStreak)
+
+# '''
+# def maxConsecutivesOne():
+#     pass
+
+# nums = [1, 1, 0, 1, 1, 1]
