@@ -257,6 +257,16 @@ def reverse_list(lst):
 lst = ["pooh", "christopher robin", "piglet", "roo", "eeyore"]
 reverse_list(lst)
 
+# Problem 3
+
+def remove_dupes(items):
+    print(len(set(items)))
+
+items = ["extract of malt", "haycorns", "honey", "thistle", "thistle"]
+remove_dupes(items)
+
+items = ["extract of malt", "haycorns", "honey", "thistle"]
+remove_dupes(items)
 
 # '''
 # x can be a non negative integer
