@@ -206,9 +206,41 @@ pile2 = [2, 4]
 k = 3
 good_pairs(pile1, pile2, k)
 
-# problem 11
+###########
+# ADVANCED
+###########
 
-# problem 12
+
+# Problem 1
+
+def transpose(matrix):
+    # print([[row[i] for row in matrix] for i in range(len(matrix[0]))])
+    rows = len(matrix)
+    cols = len(matrix[0])
+
+    result = []
+    for c in range(cols):
+        new_row = []
+        for r in range(rows):
+            new_row.append(matrix[r][c])
+        result.append(new_row)
+
+    print(result)
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+transpose(matrix)
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+transpose(matrix)
+
+
 
 
 # '''
