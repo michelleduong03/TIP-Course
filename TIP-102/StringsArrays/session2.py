@@ -268,6 +268,25 @@ remove_dupes(items)
 items = ["extract of malt", "haycorns", "honey", "thistle"]
 remove_dupes(items)
 
+# Problem 4
+
+def sort_by_parity(nums):
+    evens = []
+    odds = []
+    for num in nums:
+        if num % 2 == 0:
+            evens.append(num)
+        else:
+            odds.append(num)
+    print(evens + odds)
+
+
+nums = [3, 1, 2, 4]
+sort_by_parity(nums)
+
+nums = [0]
+sort_by_parity(nums)
+
 # '''
 # x can be a non negative integer
 # build up a string
