@@ -119,7 +119,12 @@ print(max_audience_performances(audiences2))
 # problem 7
 
 def max_audience_performances(audiences):
-    pass
+    counts = {}
+    for a in audiences:
+        counts[a] = counts.get(a, 0) + a
+
+    max_size = max(counts.keys())
+    return counts[max_size]   
 
 audiences1 = [100, 200, 200, 150, 100, 250]
 audiences2 = [120, 180, 220, 150, 220]
