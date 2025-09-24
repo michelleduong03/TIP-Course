@@ -66,3 +66,63 @@ venue2_schedule = {
 }
 
 print(identify_conflicts(venue1_schedule, venue2_schedule))
+
+# problem 5
+
+def best_set(votes):
+    counts = {}
+    
+    for voter_id, artist in votes.items():
+        if artist not in counts:
+            counts[artist] = 0
+        counts[artist] += 1
+    
+    winner = max(counts, key=counts.get)
+    return winner
+
+votes1 = {
+    1234: "SZA", 
+    1235: "Yo-Yo Ma",
+    1236: "Ethel Cain",
+    1237: "Ethel Cain",
+    1238: "SZA",
+    1239: "SZA"
+}
+
+votes2 = {
+    1234: "SZA", 
+    1235: "Yo-Yo Ma",
+    1236: "Ethel Cain",
+    1237: "Ethel Cain",
+    1238: "SZA"
+}
+
+print(best_set(votes1))
+print(best_set(votes2))
+
+# problem 6
+
+def max_audience_performances(audiences):
+    if not audiences:
+        return 0
+    
+    max_size = max(audiences)
+    total = sum(a for a in audiences if a == max_size)
+    return total
+
+audiences1 = [100, 200, 200, 150, 100, 250]
+audiences2 = [120, 180, 220, 150, 220]
+
+print(max_audience_performances(audiences1))
+print(max_audience_performances(audiences2))
+
+# problem 7
+
+def max_audience_performances(audiences):
+    pass
+
+audiences1 = [100, 200, 200, 150, 100, 250]
+audiences2 = [120, 180, 220, 150, 220]
+
+print(max_audience_performances(audiences1))
+print(max_audience_performances(audiences2))
