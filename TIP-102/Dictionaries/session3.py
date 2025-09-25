@@ -131,3 +131,24 @@ audiences2 = [120, 180, 220, 150, 220]
 
 print(max_audience_performances(audiences1))
 print(max_audience_performances(audiences2))
+
+# problem 8
+
+def num_popular_pairs(popularity_scores):
+    counts = {}
+    for score in popularity_scores:
+        counts[score] = counts.get(score, 0) + 1
+    
+    total_pairs = 0
+    for n in counts.values():
+        total_pairs += (n * (n - 1)) // 2 
+    return total_pairs
+
+
+popularity_scores1 = [1, 2, 3, 1, 1, 3]
+popularity_scores2 = [1, 1, 1, 1]
+popularity_scores3 = [1, 2, 3]
+
+print(num_popular_pairs(popularity_scores1))
+print(num_popular_pairs(popularity_scores2))
+print(num_popular_pairs(popularity_scores3)) 
