@@ -152,3 +152,27 @@ popularity_scores3 = [1, 2, 3]
 print(num_popular_pairs(popularity_scores1))
 print(num_popular_pairs(popularity_scores2))
 print(num_popular_pairs(popularity_scores3)) 
+
+# problem 9
+
+def find_stage_arrangement_difference(s, t):
+    """
+    :type s: List[str]
+    :type t: List[str]
+    :rtype: int
+    """
+    index_map = {performer: i for i, performer in enumerate(s)}
+    
+    total_diff = 0
+    for j, performer in enumerate(t):
+        total_diff += abs(index_map[performer] - j)
+    
+    return total_diff
+
+s1 = ["Alice", "Bob", "Charlie"]
+t1 = ["Bob", "Alice", "Charlie"]
+s2 = ["Alice", "Bob", "Charlie", "David", "Eve"]
+t2 = ["Eve", "David", "Bob", "Alice", "Charlie"]
+
+print(find_stage_arrangement_difference(s1, t1))
+print(find_stage_arrangement_difference(s2, t2))
