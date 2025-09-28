@@ -14,8 +14,6 @@ s2 = [2, 3, 5, 9]
 
 print(find_difference(s1, s2))
 
-
-
 # problem 1
 
 def most_endangered(species_list):
@@ -103,7 +101,19 @@ print(navigate_research_station(station_layout2, observations2))
 # problem 4
 
 def prioritize_observations(observed_species, priority_species):
-  pass
+    result = []
+
+    for species in priority_species:
+        for obs in observed_species:
+            if obs == species:
+                result.append(obs)
+
+    extras = [obs for obs in observed_species if obs not in priority_species]
+
+    result.extend(sorted(extras))
+
+    return result
+
 
 observed_species1 = ["🐯", "🦁", "🦌", "🦁", "🐯", "🐘", "🐍", "🦑", "🐻", "🐯", "🐼"]
 priority_species1 = ["🐯", "🦌", "🐘", "🦁"]  
@@ -113,3 +123,26 @@ priority_species2 = ["cardinal", "sparrow", "bluejay"]
 
 print(prioritize_observations(observed_species1, priority_species1))
 print(prioritize_observations(observed_species2, priority_species2)) 
+
+# problem 5
+
+def distinct_averages(species_populations):
+    species_populations.sort() 
+    left, right = 0, len(species_populations) - 1
+    averages = set() 
+
+    while left < right:
+        avg = (species_populations[left] + species_populations[right]) / 2
+        averages.add(avg)
+        left += 1
+        right -= 1
+
+    return len(averages)
+
+
+species_populations1 = [4,1,4,0,3,5]
+species_populations2 = [1,100]
+
+print(distinct_averages(species_populations1))
+print(distinct_averages(species_populations2)) 
+
