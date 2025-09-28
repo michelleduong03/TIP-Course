@@ -146,3 +146,37 @@ species_populations2 = [1,100]
 print(distinct_averages(species_populations1))
 print(distinct_averages(species_populations2)) 
 
+# problem 6
+
+def max_species_copies(raised_species, target_species):
+  species_dict = {}
+  target_dict = {}
+
+  for i in range (len(raised_species)):
+      if raised_species[i] in species_dict:
+          species_dict[raised_species[i]] += 1
+      else:
+          species_dict[raised_species[i]] = 1
+
+  for word in range (len(target_species)):
+      if target_species[word] in target_dict:
+        target_dict[target_species[word]] += 1
+      else:
+        target_dict[target_species[word]] = 1
+
+  res = float('inf')
+
+  for i in target_dict:
+    if i not in species_dict:
+        return 0  
+    res = min(res, species_dict[i] // target_dict[i])
+  
+  return res
+
+raised_species1 = "abcba"
+target_species1 = "abc"
+print(max_species_copies(raised_species1, target_species1))  # Output: 1
+
+raised_species2 = "aaaaabbbbcc"
+target_species2 = "abc"
+print(max_species_copies(raised_species2, target_species2)) # Output: 2
