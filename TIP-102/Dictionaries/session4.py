@@ -180,3 +180,33 @@ print(max_species_copies(raised_species1, target_species1))  # Output: 1
 raised_species2 = "aaaaabbbbcc"
 target_species2 = "abc"
 print(max_species_copies(raised_species2, target_species2)) # Output: 2
+
+# problem 7
+
+def count_unique_species(ecosystem_data):
+  nums = []
+  curr = ""
+
+  for i in range(len(ecosystem_data)):
+      if ecosystem_data[i].isnumeric():
+        curr += ecosystem_data[i]
+      else:
+        if curr != "":
+          nums.append(int(curr))
+          curr = ""
+      
+  if curr != "":
+     nums.append(int(curr))
+    
+
+  res = list(set(nums))
+
+  return len(res)
+
+ecosystem_data1 = "f123de34g8hi34"
+ecosystem_data2 = "species1234forest234"
+ecosystem_data3 = "x1y01z001"
+
+print(count_unique_species(ecosystem_data1)) # 3
+print(count_unique_species(ecosystem_data2)) # 2
+print(count_unique_species(ecosystem_data3)) # 1
