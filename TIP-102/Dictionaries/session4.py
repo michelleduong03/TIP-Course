@@ -49,6 +49,8 @@ species_list = [
     }
 ]
 
+print("Problem 1")
+
 print(most_endangered(species_list))
 
 # problem 2
@@ -69,6 +71,8 @@ observed_species1 = "aAAbbbb"
 
 endangered_species2 = "z"
 observed_species2 = "ZZ"
+
+print("Problem 2")
 
 print(count_endangered_species(endangered_species1, observed_species1)) 
 print(count_endangered_species(endangered_species2, observed_species2))  
@@ -94,6 +98,8 @@ observations1 = "wildlife"
 
 station_layout2 = "abcdefghijklmnopqrstuvwxyz"
 observations2 = "cba"
+
+print("Problem 3")
 
 print(navigate_research_station(station_layout1, observations1))  
 print(navigate_research_station(station_layout2, observations2))
@@ -121,6 +127,8 @@ priority_species1 = ["🐯", "🦌", "🐘", "🦁"]
 observed_species2 = ["bluejay", "sparrow", "cardinal", "robin", "crow"]
 priority_species2 = ["cardinal", "sparrow", "bluejay"]
 
+print("Problem 4")
+
 print(prioritize_observations(observed_species1, priority_species1))
 print(prioritize_observations(observed_species2, priority_species2)) 
 
@@ -142,6 +150,8 @@ def distinct_averages(species_populations):
 
 species_populations1 = [4,1,4,0,3,5]
 species_populations2 = [1,100]
+
+print("Problem 5")
 
 print(distinct_averages(species_populations1))
 print(distinct_averages(species_populations2)) 
@@ -172,6 +182,8 @@ def max_species_copies(raised_species, target_species):
     res = min(res, species_dict[i] // target_dict[i])
   
   return res
+
+print("Problem 6")
 
 raised_species1 = "abcba"
 target_species1 = "abc"
@@ -207,6 +219,8 @@ ecosystem_data1 = "f123de34g8hi34"
 ecosystem_data2 = "species1234forest234"
 ecosystem_data3 = "x1y01z001"
 
+print("Problem 7")
+
 print(count_unique_species(ecosystem_data1)) # 3
 print(count_unique_species(ecosystem_data2)) # 2
 print(count_unique_species(ecosystem_data3)) # 1
@@ -219,14 +233,19 @@ def num_equiv_species_pairs(species_pairs):
   for a, b in species_pairs:
      pair = tuple(sorted([a, b]))
      if pair not in counter_dict:
-        counter_dict[pair] += 1
-     else:
         counter_dict[pair] = 1
+     else:
+        counter_dict[pair] += 1
+    
+  total = 0
+  for n in counter_dict.values():
+    total += n * (n - 1) // 2 # formula for equivalent pairs
 
-  print(counter_dict)
+  return total
 
 species_pairs1 = [[1,2],[2,1],[3,4],[5,6]]
 species_pairs2 = [[1,2],[1,2],[1,1],[1,2],[2,2]]
 
+print("Problem 8")
 print(num_equiv_species_pairs(species_pairs1))
 print(num_equiv_species_pairs(species_pairs2))
