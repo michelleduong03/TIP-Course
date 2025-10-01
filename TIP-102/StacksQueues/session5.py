@@ -20,6 +20,9 @@ print("Problem 1")
 print(is_valid_post_format("()")) # true
 print(is_valid_post_format("()[]{}")) # true
 print(is_valid_post_format("(]")) # false
+print(is_valid_post_format("(()())")) # true
+print(is_valid_post_format("(){}[]")) # true
+
 
 # problem 2
 def reverse_comments_queue(comments):
@@ -52,3 +55,23 @@ def is_symmetrical_title(title):
 print("Problem 3")
 print(is_symmetrical_title("A Santa at NASA")) # true
 print(is_symmetrical_title("Social Media")) # false
+
+# problem 4
+def engagement_boost(engagements):
+  left, right = 0, len(engagements) - 1
+  result = []
+
+  while left <= right:
+    if abs(engagements[left]) > abs(engagements[right]):
+      result.append(engagements[left] ** 2)
+      left += 1
+    else:
+      result.append(engagements[right] ** 2)
+      right -= 1
+
+  return result[::-1]
+
+print("Problem 4")
+print(engagement_boost([-4, -1, 0, 3, 10]))  # [0, 1, 9, 16, 100]
+print(engagement_boost([-7, -3, 2, 3, 11]))  # [4, 9, 9, 49, 121]
+
