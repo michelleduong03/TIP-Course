@@ -75,3 +75,18 @@ print("Problem 4")
 print(engagement_boost([-4, -1, 0, 3, 10]))  # [0, 1, 9, 16, 100]
 print(engagement_boost([-7, -3, 2, 3, 11]))  # [4, 9, 9, 49, 121]
 
+# problem 5
+def clean_post(post):
+  stack = []
+
+  for char in post:
+    if stack and stack[-1] != char and stack[-1].lower() == char.lower():
+      stack.pop() 
+    else:
+      stack.append(char)
+
+  return "".join(stack)
+
+print(clean_post("poOost")) # post
+print(clean_post("abBAcC")) # 
+print(clean_post("s")) # s
