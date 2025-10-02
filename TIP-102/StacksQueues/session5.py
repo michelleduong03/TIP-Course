@@ -90,3 +90,15 @@ def clean_post(post):
 print(clean_post("poOost")) # post
 print(clean_post("abBAcC")) # 
 print(clean_post("s")) # s
+
+# problem 6
+def edit_post(post):
+    words = post.split()
+    new_post = []
+    for word in words:
+        new_post.append(word[::-1])
+    return " ".join(new_post)
+
+print("Problem 6")
+print(edit_post("Boost your engagement with these tips")) # tsooB ruoy tnemegegna htiw esehT spit
+print(edit_post("Check out my latest vlog")) # kcehC tuo ym tseval golv
