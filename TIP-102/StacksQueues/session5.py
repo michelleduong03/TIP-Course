@@ -102,3 +102,22 @@ def edit_post(post):
 print("Problem 6")
 print(edit_post("Boost your engagement with these tips")) # tsooB ruoy tnemegegna htiw esehT spit
 print(edit_post("Check out my latest vlog")) # kcehC tuo ym tseval golv
+
+# probelm 7
+def post_compare(draft1, draft2):
+  def build(draft):
+    stack = []
+    for c in draft:
+      if c == "#":
+        if stack:
+          stack.pop()
+      else:
+        stack.append(c)
+    return "".join(stack)
+    
+  return build(draft1) == build(draft2)
+
+print("Problem 7")
+print(post_compare("ab#c", "ad#c"))
+print(post_compare("ab##", "c#d#")) 
+print(post_compare("a#c", "b")) 
