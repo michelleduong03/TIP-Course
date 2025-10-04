@@ -23,7 +23,23 @@ print(manage_stage_changes(["Schedule X", "Schedule Y", "Cancel", "Cancel", "Sch
 
 # Problem 2
 def process_performance_requests(requests):
-    pass
+    queue = requests[:] # make a copy of requests
+    result = [] # final order of processed performances
+
+    while queue: # while there are still requests left
+        # find the request with the highest priority
+        max_priority = -1
+        max_index = -1
+        for i in range(len(queue)):
+            if queue[i][0] > max_priority: # compare priorities
+                max_priority = queue[i][0]
+                max_index = i
+
+        # remove that request from queue and add its name to result
+        _, performance = queue.pop(max_index)
+        result.append(performance)
+
+    return result
 
 print(process_performance_requests([(3, 'Dance'), (5, 'Music'), (1, 'Drama')]))
 print(process_performance_requests([(2, 'Poetry'), (1, 'Magic Show'), (4, 'Concert'), (3, 'Stand-up Comedy')]))
