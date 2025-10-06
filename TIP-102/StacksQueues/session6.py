@@ -121,4 +121,19 @@ print(next_greater_event([4, 1, 2], [1, 3, 4, 2]))  # [-1, 3, -1]
 print(next_greater_event([2, 4], [1, 2, 3, 4]))     # [3, -1]
 
 # Problem 7
+def sort_performances_by_type(performances):
+    evens = []
+    odds = []
+    
+    for perf in performances:
+        if perf % 2 == 0:
+            evens.append(perf)
+        else:
+            odds.append(perf)
+    
+    return evens + odds
+
+# Example Usage
+print(sort_performances_by_type([3, 1, 2, 4]))  # [2, 4, 3, 1]
+print(sort_performances_by_type([0]))           # [0]
 
