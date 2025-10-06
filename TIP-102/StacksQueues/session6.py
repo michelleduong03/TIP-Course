@@ -100,6 +100,25 @@ print(merge_schedules("ab", "pqrs"))   # apbqrs
 print(merge_schedules("abcd", "pq"))   # apbqcd
 
 # Problem 6
+def next_greater_event(schedule1, schedule2):
+    stack = []
+    next_greater = {}
+
+    for num in schedule2:
+        while stack and num > stack[-1]:
+            smaller = stack.pop()
+            next_greater[smaller] = num
+        stack.append(num)
+
+    for leftover in stack:
+        next_greater[leftover] = -1
+
+    return [next_greater[num] for num in schedule1]
+
+
+# Example Usage
+print(next_greater_event([4, 1, 2], [1, 3, 4, 2]))  # [-1, 3, -1]
+print(next_greater_event([2, 4], [1, 2, 3, 4]))     # [3, -1]
 
 # Problem 7
 
