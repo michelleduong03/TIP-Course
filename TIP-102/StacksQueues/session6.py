@@ -46,6 +46,21 @@ print(process_performance_requests([(2, 'Poetry'), (1, 'Magic Show'), (4, 'Conce
 print(process_performance_requests([(1, 'Art Exhibition'), (3, 'Film Screening'), (2, 'Workshop'), (5, 'Keynote Speech'), (4, 'Panel Discussion')]))
 
 # Problem 3
+def collect_festival_points(points):
+    stack = []
+    total = 0 
+
+    for p in points:
+        stack.append(p)
+
+    while stack:
+        total += stack.pop()
+
+    return total
+
+print(collect_festival_points([5, 8, 3, 10])) 
+print(collect_festival_points([2, 7, 4, 6])) 
+print(collect_festival_points([1, 5, 9, 2, 8])) 
 
 # Problem 4
 
