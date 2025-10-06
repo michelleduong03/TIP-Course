@@ -83,8 +83,21 @@ print(booth_navigation(clues1))  # [1, 3, 4]
 print(booth_navigation(clues2))  # [5, 7]
 print(booth_navigation(clues3))  # [3]
 
-
 # Problem 5
+def merge_schedules(schedule1, schedule2):
+    merged = []
+    for i in range(max(len(schedule1), len(schedule2))):
+        if i < len(schedule1):
+            merged.append(schedule1[i])
+        if i < len(schedule2):
+            merged.append(schedule2[i])
+    return ''.join(merged)
+
+
+# Example Usage
+print(merge_schedules("abc", "pqr"))   # apbqcr
+print(merge_schedules("ab", "pqrs"))   # apbqrs
+print(merge_schedules("abcd", "pq"))   # apbqcd
 
 # Problem 6
 
