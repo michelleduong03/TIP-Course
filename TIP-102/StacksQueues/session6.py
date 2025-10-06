@@ -63,6 +63,26 @@ print(collect_festival_points([2, 7, 4, 6]))
 print(collect_festival_points([1, 5, 9, 2, 8])) 
 
 # Problem 4
+def booth_navigation(clues):
+    stack = []
+    for clue in clues:
+        if clue == "back":
+            if stack:
+                stack.pop()
+        else:
+            stack.append(clue)
+    return stack
+
+
+# Example Usage
+clues1 = [1, 2, "back", 3, 4]
+clues2 = [5, 3, 2, "back", "back", 7]
+clues3 = [1, "back", 2, "back", "back", 3]
+
+print(booth_navigation(clues1))  # [1, 3, 4]
+print(booth_navigation(clues2))  # [5, 7]
+print(booth_navigation(clues3))  # [3]
+
 
 # Problem 5
 
