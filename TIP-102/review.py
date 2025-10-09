@@ -1,6 +1,11 @@
 # problem 1
 def extract_nft_names(nft_collection):
-    pass
+    nft_names = []
+
+    for nft in nft_collection:
+        nft_names.append(nft["name"])
+    
+    return nft_names
 
 # Example usage:
 nft_collection = [
@@ -18,6 +23,7 @@ nft_collection_3 = [
     {"name": "Golden Hour", "creator": "SunsetArtist", "value": 8.9}
 ]
 
+print("problem 1")
 print(extract_nft_names(nft_collection))
 print(extract_nft_names(nft_collection_2))
 print(extract_nft_names(nft_collection_3))
@@ -40,6 +46,7 @@ nft_collection_2 = [
 
 nft_collection_3 = []
 
+print("problem 2")
 print(extract_nft_names(nft_collection))
 print(extract_nft_names(nft_collection_2))
 print(extract_nft_names(nft_collection_3))
