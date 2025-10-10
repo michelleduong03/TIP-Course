@@ -53,12 +53,9 @@ print(extract_nft_names(nft_collection_3))
 
 # problem 3
 def identify_popular_creators(nft_collection):
-    if not nft_collection:
-        return []
-
     creator_count = {}
 
-    # Count how many NFTs each creator has
+    # Count NFTs per creator
     for nft in nft_collection:
         creator = nft["creator"]
         if creator in creator_count:
@@ -66,11 +63,11 @@ def identify_popular_creators(nft_collection):
         else:
             creator_count[creator] = 1
 
-    # Find the highest count
-    max_count = max(creator_count.values())
-
-    # Return all creators who match that count
-    popular_creators = [creator for creator, count in creator_count.items() if count == max_count]
+    # Collect creators with more than 1 NFT
+    popular_creators = []
+    for creator, count in creator_count.items():
+        if count > 1:
+            popular_creators.append(creator)
 
     return popular_creators
 
