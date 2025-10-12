@@ -162,3 +162,5 @@ nft_collections_3 = [
 print(search_nft_by_tag(nft_collections, "landscape"))
 print(search_nft_by_tag(nft_collections_2, "sunset"))
 print(search_nft_by_tag(nft_collections_3, "modern"))
+
+#problem 6
