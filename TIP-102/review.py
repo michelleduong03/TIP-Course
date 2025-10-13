@@ -164,3 +164,31 @@ print(search_nft_by_tag(nft_collections_2, "sunset"))
 print(search_nft_by_tag(nft_collections_3, "modern"))
 
 #problem 6
+def process_nft_queue(nft_queue):
+    processed_order = []
+    for nft in nft_queue:
+        processed_order.append(nft["name"])
+    return processed_order
+
+nft_queue = [
+    {"name": "Abstract Horizon", "processing_time": 2},
+    {"name": "Pixel Dreams", "processing_time": 3},
+    {"name": "Urban Jungle", "processing_time": 1}
+]
+print(process_nft_queue(nft_queue))
+# ['Abstract Horizon', 'Pixel Dreams', 'Urban Jungle']
+
+nft_queue_2 = [
+    {"name": "Golden Hour", "processing_time": 4},
+    {"name": "Sunset Serenade", "processing_time": 2},
+    {"name": "Ocean Waves", "processing_time": 3}
+]
+print(process_nft_queue(nft_queue_2))
+# ['Golden Hour', 'Sunset Serenade', 'Ocean Waves']
+
+nft_queue_3 = [
+    {"name": "Crypto Kitty", "processing_time": 5},
+    {"name": "Galactic Voyage", "processing_time": 6}
+]
+print(process_nft_queue(nft_queue_3))
+# ['Crypto Kitty', 'Galactic Voyage']
