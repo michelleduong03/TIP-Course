@@ -212,3 +212,29 @@ actions_3 = ["add", "remove", "remove", "add"]
 print(validate_nft_actions(actions))    # True
 print(validate_nft_actions(actions_2))  # True
 print(validate_nft_actions(actions_3))  # False
+
+# problem 8
+def find_closest_nft_values(nft_values, budget):
+    left, right = 0, len(nft_values) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        if nft_values[mid] < budget:
+            left = mid + 1
+        elif nft_values[mid] > budget:
+            right = mid - 1
+        else:  # exact match
+            return (nft_values[mid], nft_values[mid])
+    
+    lower = nft_values[right] if right >= 0 else nft_values[0]
+    upper = nft_values[left] if left < len(nft_values) else nft_values[-1]
+    
+    return (lower, upper)
+
+nft_values = [3.5, 5.4, 7.2, 9.0, 10.5]
+nft_values_2 = [2.0, 4.5, 6.3, 7.8, 12.1]
+nft_values_3 = [1.0, 2.5, 4.0, 6.0, 9.0]
+
+print(find_closest_nft_values(nft_values, 8.0))    # (7.2, 9.0)
+print(find_closest_nft_values(nft_values_2, 6.5))  # (6.3, 7.8)
+print(find_closest_nft_values(nft_values_3, 3.0))  # (2.5, 4.0)
