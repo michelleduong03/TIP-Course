@@ -192,3 +192,23 @@ nft_queue_3 = [
 ]
 print(process_nft_queue(nft_queue_3))
 # ['Crypto Kitty', 'Galactic Voyage']
+
+# problem 7
+def validate_nft_actions(actions):
+    stack = 0
+    for action in actions:
+        if action == "add":
+            stack += 1
+        elif action == "remove":
+            if stack == 0:
+                return False
+            stack -= 1
+    return stack == 0
+
+actions = ["add", "add", "remove", "remove"]
+actions_2 = ["add", "remove", "add", "remove"]
+actions_3 = ["add", "remove", "remove", "add"]
+
+print(validate_nft_actions(actions))    # True
+print(validate_nft_actions(actions_2))  # True
+print(validate_nft_actions(actions_3))  # False
