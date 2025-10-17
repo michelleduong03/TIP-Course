@@ -97,3 +97,41 @@ node_one.next = node_two
 node_two.next = node_three
 
 print_linked_list(halve_list(node_one))
+
+# problem 5
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+# For testing
+def print_linked_list(head):
+    current = head
+    while current:
+        print(current.value, end=" -> " if current.next else "\n")
+        current = current.next
+
+def delete_tail(head):
+    if not head or not head.next: # if head doesn't exist or the next head doesn't return None because nothing left
+        return None
+    
+    current = head
+
+    while current.next.next: # loop until node before the last one
+        current = current.next
+    
+    current.next = None # breaks link to last node
+
+    return head
+    
+
+#Example Usage:
+butterfly = Node("Common Butterfly")
+ladybug = Node("Ladybug")
+beetle = Node("Scarab Beetle")
+butterfly.next = ladybug
+ladybug.next = beetle
+
+# Input List: butterfly -> ladybug -> beetle
+print_linked_list(delete_tail(butterfly))
+
