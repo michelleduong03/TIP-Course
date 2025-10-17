@@ -57,7 +57,6 @@ saharah.next = isabelle
 print_linked_list(kk_slider)
 
 
-
 # problem 3
 class Node:
     def __init__(self, value, next=None):
@@ -82,3 +81,19 @@ task_1.next = task_2
 task_2.next = task_3
 
 print_linked_list(add_first(task_1, "check turnip prices"))
+
+# problem 4
+def halve_list(head):
+    current = head
+    while current:
+        current.value = current.value / 2
+        current = current.next
+    return head
+
+node_one = Node(5)
+node_two = Node(6)
+node_three = Node(7)
+node_one.next = node_two
+node_two.next = node_three
+
+print_linked_list(halve_list(node_one))
