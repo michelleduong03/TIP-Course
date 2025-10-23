@@ -42,6 +42,47 @@ playlist = SongNode("Saturn", "SZA",
 
 print(get_artist_frequency(playlist))
 
+# PROBLEM 3
+class SongNode:
+    def __init__(self, song, artist, next=None):
+        self.song = song
+        self.artist = artist
+        self.next = next
+        
+# For testing
+def print_linked_list(node):
+    current = node
+    while current:
+        print((current.song, current.artist), end=" -> " if current.next else "")
+        current = current.next
+    print()
+
+
+def remove_song(playlist_head, song):
+    if not playlist_head:
+        return None
+    # If head is the node to remove
+    if playlist_head.song == song:
+        return playlist_head.next
+
+    current = playlist_head
+    while current.next:
+        if current.next.song == song:
+            # skip the node to remove it
+            current.next = current.next.next
+            return playlist_head
+        current = current.next
+
+    return playlist_head
+
+
+playlist = SongNode("SOS", "ABBA", 
+                SongNode("Simple Twist of Fate", "Bob Dylan",
+                    SongNode("Dreams", "Fleetwood Mac",
+                        SongNode("Lovely Day", "Bill Withers"))))
+
 print("---PROBLEM 3---")
+print_linked_list(remove_song(playlist, "Dreams"))
+
 print("---PROBLEM 4---")
 print("---PROBLEM 5---")
