@@ -116,4 +116,37 @@ song4.next = song2  # cycle back to song2
 print(on_repeat(song1))  # True
 
 
-print("---PROBLEM 5---")
+# PROBLEM 5
+
+
+# PROBLEM 6
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+def count_critical_points(song_audio):
+    if not song_audio or not song_audio.next or not song_audio.next.next:
+        return 0  # fewer than 3 nodes means no critical points
+
+    count = 0
+    prev = song_audio
+    curr = song_audio.next
+
+    while curr.next:
+        nxt = curr.next
+        # check local minima
+        if curr.value < prev.value and curr.value < nxt.value:
+            count += 1
+        # check local maxima
+        elif curr.value > prev.value and curr.value > nxt.value:
+            count += 1
+        # move forward
+        prev = curr
+        curr = nxt
+
+    return count
+
+print("---PROBLEM 6---")
+song_audio = Node(5, Node(3, Node(1, Node(2, Node(5, Node(1, Node(2)))))))
+print(count_critical_points(song_audio))  # Output: 3
