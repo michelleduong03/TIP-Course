@@ -97,3 +97,36 @@ print(collect_false_evidence(clue1))
 print(collect_false_evidence(clue5))
 
 # PROBLEM 3
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+def print_linked_list(head):
+    current = head
+    while current:
+        print(current.value, end=" -> " if current.next else "\n")
+        current = current.next
+
+def partition(suspect_ratings, threshold):
+    greater = Node(0)  # dummy head for > threshold
+    lesser = Node(0)   # dummy head for <= threshold
+    g_tail, l_tail = greater, lesser
+    current = suspect_ratings
+
+    while current:
+        if current.value > threshold:
+            g_tail.next = current
+            g_tail = g_tail.next
+        else:
+            l_tail.next = current
+            l_tail = l_tail.next
+        current = current.next
+
+    g_tail.next = lesser.next  # join lists
+    l_tail.next = None         # end the list
+    return greater.next
+
+suspect_ratings = Node(1, Node(4, Node(3, Node(2, Node(5, Node(2))))))
+
+print_linked_list(partition(suspect_ratings, 3))
