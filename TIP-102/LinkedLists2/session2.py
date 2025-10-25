@@ -130,3 +130,27 @@ def partition(suspect_ratings, threshold):
 suspect_ratings = Node(1, Node(4, Node(3, Node(2, Node(5, Node(2))))))
 
 print_linked_list(partition(suspect_ratings, 3))
+
+# PROBLEM 4
+def merge_timelines(known_timeline, witness_timeline):
+    dummy = Node(0)
+    tail = dummy
+
+    while known_timeline and witness_timeline:
+        if known_timeline.value < witness_timeline.value:
+            tail.next = known_timeline
+            known_timeline = known_timeline.next
+        else:
+            tail.next = witness_timeline
+            witness_timeline = witness_timeline.next
+        tail = tail.next
+
+    # Attach remaining nodes (if any)
+    tail.next = known_timeline or witness_timeline
+
+    return dummy.next
+
+known_timeline = Node(1, Node(2, Node(4)))
+witness_timeline = Node(1, Node(3, Node(4)))
+
+print_linked_list(merge_timelines(known_timeline, witness_timeline))
