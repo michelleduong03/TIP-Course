@@ -200,3 +200,44 @@ evidence_list2 = Node(0, Node(1, Node(2)))  # fixed typo: Noe -> Node
 
 print_linked_list(rotate_right(evidence_list1, 2))
 print_linked_list(rotate_right(evidence_list2, 4))
+
+# PROBLEM 6
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+# For testing
+def print_linked_list(head):
+    current = head
+    while current:
+        print(current.value, end=" -> " if current.next else "\n")
+        current = current.next
+
+def add_two_numbers(head_a, head_b):
+    dummy = Node(0)  # Dummy node to simplify list construction
+    current = dummy
+    carry = 0
+
+    # Traverse both lists
+    while head_a or head_b or carry:
+        val_a = head_a.value if head_a else 0
+        val_b = head_b.value if head_b else 0
+
+        total = val_a + val_b + carry
+        carry = total // 10
+        current.next = Node(total % 10)
+        current = current.next
+
+        if head_a:
+            head_a = head_a.next
+        if head_b:
+            head_b = head_b.next
+
+    return dummy.next
+
+# Example usage
+head_a = Node(2, Node(4, Node(3)))  # represents 342
+head_b = Node(5, Node(6, Node(4)))  # represents 465
+
+print_linked_list(add_two_numbers(head_a, head_b))
