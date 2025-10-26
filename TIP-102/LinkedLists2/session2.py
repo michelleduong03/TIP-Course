@@ -154,3 +154,49 @@ known_timeline = Node(1, Node(2, Node(4)))
 witness_timeline = Node(1, Node(3, Node(4)))
 
 print_linked_list(merge_timelines(known_timeline, witness_timeline))
+
+# PROBLEM 5
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+# For testing
+def print_linked_list(head):
+    current = head
+    while current:
+        print(current.value, end=" -> " if current.next else "\n")
+        current = current.next
+
+def rotate_right(head, k):
+    if not head or not head.next or k == 0:
+        return head
+
+    # Find the length and the tail
+    length = 1
+    tail = head
+    while tail.next:
+        tail = tail.next
+        length += 1
+
+    # Make it circular
+    tail.next = head
+
+    # Find new head after rotation
+    k = k % length
+    steps_to_new_head = length - k
+    new_tail = head
+    for _ in range(steps_to_new_head - 1):
+        new_tail = new_tail.next
+    new_head = new_tail.next
+
+    # Break the circle
+    new_tail.next = None
+    return new_head
+
+# Example usage
+evidence_list1 = Node(1, Node(2, Node(3, Node(4, Node(5)))))
+evidence_list2 = Node(0, Node(1, Node(2)))  # fixed typo: Noe -> Node
+
+print_linked_list(rotate_right(evidence_list1, 2))
+print_linked_list(rotate_right(evidence_list2, 4))
