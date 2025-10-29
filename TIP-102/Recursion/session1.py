@@ -26,3 +26,23 @@ def sum_stones(stones):
 # Example usage
 print(sum_stones([5, 10, 15, 20, 25, 30]))
 print(sum_stones([12, 8, 22, 16, 10]))
+
+# PROBLEM 3
+def count_suits_iterative(suits):
+    unique_suits = set()
+    for suit in suits:
+        unique_suits.add(suit)
+    return len(unique_suits)
+
+
+def count_suits_recursive(suits, seen=None):
+    if seen is None:
+        seen = set()
+    if not suits:
+        return len(seen)
+    seen.add(suits[0])
+    return count_suits_recursive(suits[1:], seen)
+
+# Example usage
+print(count_suits_iterative(["Mark I", "Mark I", "Mark III"]))
+print(count_suits_recursive(["Mark I", "Mark I", "Mark III"]))
