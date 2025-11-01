@@ -78,4 +78,31 @@ print(count_checked_in_passengers(rooms1))  # 4
 print(count_checked_in_passengers(rooms2))  # 1
 print(count_checked_in_passengers(rooms3))  # 0
 
-#
+# PROBLEM 4
+def is_profitable(excursion_counts):
+    n = len(excursion_counts)
+    left, right = 0, n
+    while left <= right:
+        mid = (left + right) // 2  # potential x
+        # find first index where excursion_counts[i] >= mid
+        l, r = 0, n - 1
+        while l <= r:
+            m = (l + r) // 2
+            if excursion_counts[m] >= mid:
+                r = m - 1
+            else:
+                l = m + 1
+        count = n - l  # number of excursions with ≥ mid passengers
+
+        if count == mid:
+            return mid
+        elif count > mid:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+
+# Example Usage
+print(is_profitable([3, 5]))   # 2
+print(is_profitable([0, 0]))   # -1
