@@ -106,3 +106,21 @@ def is_profitable(excursion_counts):
 # Example Usage
 print(is_profitable([3, 5]))   # 2
 print(is_profitable([0, 0]))   # -1
+
+# PROBLEM 5
+def find_shallowest_point(depths):
+    # Base case: single element
+    if len(depths) == 1:
+        return depths[0]
+    
+    # Split the array
+    mid = len(depths) // 2
+    left_min = find_shallowest_point(depths[:mid])
+    right_min = find_shallowest_point(depths[mid:])
+    
+    # Return the smaller of the two
+    return left_min if left_min < right_min else right_min
+
+# Example Usage
+print(find_shallowest_point([5, 7, 2, 8, 3]))  # 2
+print(find_shallowest_point([12, 15, 10, 21])) # 10
