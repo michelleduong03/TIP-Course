@@ -19,6 +19,8 @@ print(find_cruise_length([9, 10, 11, 12, 13, 14, 15], 13))
 
 print(find_cruise_length([8, 9, 12, 13, 13, 14, 15], 11))
 
+
+
 # PROBLEM 2
 # def find_cabin_index(cabins, preferred_deck):
 #     def helper(low, high):
@@ -56,6 +58,8 @@ print(find_cabin_index([1, 3, 5, 6], 5))  # 2
 print(find_cabin_index([1, 3, 5, 6], 2))  # 1
 print(find_cabin_index([1, 3, 5, 6], 7))  # 4
 
+
+
 # PROBLEM 3
 def count_checked_in_passengers(rooms):
     left, right = 0, len(rooms) - 1
@@ -77,6 +81,8 @@ rooms3 = [0, 0, 0, 0, 0, 0]
 print(count_checked_in_passengers(rooms1))  # 4
 print(count_checked_in_passengers(rooms2))  # 1
 print(count_checked_in_passengers(rooms3))  # 0
+
+
 
 # PROBLEM 4
 def is_profitable(excursion_counts):
@@ -107,6 +113,8 @@ def is_profitable(excursion_counts):
 print(is_profitable([3, 5]))   # 2
 print(is_profitable([0, 0]))   # -1
 
+
+
 # PROBLEM 5
 def find_shallowest_point(depths):
     # Base case: single element
@@ -124,6 +132,8 @@ def find_shallowest_point(depths):
 # Example Usage
 print(find_shallowest_point([5, 7, 2, 8, 3]))  # 2
 print(find_shallowest_point([12, 15, 10, 21])) # 10
+
+
 
 # PROBLEM 6
 def find_treasure(matrix, treasure):
