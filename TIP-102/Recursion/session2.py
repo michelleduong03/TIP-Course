@@ -124,3 +124,32 @@ def find_shallowest_point(depths):
 # Example Usage
 print(find_shallowest_point([5, 7, 2, 8, 3]))  # 2
 print(find_shallowest_point([12, 15, 10, 21])) # 10
+
+# PROBLEM 6
+def find_treasure(matrix, treasure):
+    if not matrix or not matrix[0]:
+        return (-1, -1)
+    
+    m, n = len(matrix), len(matrix[0])
+    row, col = 0, n - 1  # start top-right corner
+    
+    while row < m and col >= 0:
+        if matrix[row][col] == treasure:
+            return (row, col)
+        elif matrix[row][col] > treasure:
+            col -= 1  # move left
+        else:
+            row += 1  # move down
+            
+    return (-1, -1)
+
+# Example Usage
+rooms = [
+    [1, 4, 7, 11],
+    [8, 9, 10, 20],
+    [11, 12, 17, 30],
+    [18, 21, 23, 40]
+]
+
+print(find_treasure(rooms, 17))  # (2, 2)
+print(find_treasure(rooms, 5))   # (-1, -1)
