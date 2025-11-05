@@ -163,3 +163,4 @@ rooms = [
 
 print(find_treasure(rooms, 17))  # (2, 2)
 print(find_treasure(rooms, 5))   # (-1, -1)
+
