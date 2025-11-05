@@ -135,8 +135,17 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 def right_vine(root):
-  pass
+    path = []
+    current = root
+    
+    # Traverse down the rightmost path
+    while current:
+        path.append(current.val)
+        current = current.right
+
+    return path
 
 # Example Usage:
 r"""
