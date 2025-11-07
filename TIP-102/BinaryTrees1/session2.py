@@ -270,3 +270,62 @@ print_tree(add_plant(collection, "Aloe"))
 #  Fiddle Leaf Fig   Snake Plant
 #    /
 #  Aloe
+
+
+
+# Problem 5: Sorting Plants by Rarity
+
+"""
+You are going to a plant swap where you can exchange cuttings of your 
+plants for new plants from other plant enthusiasts. You want to bring
+a mix of cuttings from both common and rare plants in your collection. 
+You track your plant collection in a BST where each node has a key and 
+a val. The val contains the plant name, and the key is an integer 
+representing the plant's rarity. Plants are organized in the BST by their key.
+
+To help choose which plants to bring, write a function sort_plants() 
+which takes in the BST root collection and returns an array of plant 
+nodes as tuples in the form (key, val) sorted from least to most rare. 
+Sorted order can be achieved by performing an inorder traversal of the BST.
+"""
+class TreeNode:
+    def __init__(self, key, value, left=None, right=None):
+        self.key = key      # Plant rarity
+        self.val = value      # Plant name
+        self.left = left
+        self.right = right
+
+
+def sort_plants(collection):
+    if collection is None:
+        return []
+
+    # Traverse left subtree
+    left_sorted = sort_plants(collection.left)
+    
+    # Visit current node
+    current_node = [(collection.key, collection.val)]
+    
+    # Traverse right subtree
+    right_sorted = sort_plants(collection.right)
+    
+    # Combine results
+    return left_sorted + current_node + right_sorted
+
+# Example Usage:
+r"""
+         (3, "Monstera")
+        /               \
+   (1, "Pothos")     (5, "Witchcraft Orchid")
+        \                 /
+  (2, "Spider Plant")   (4, "Hoya Motoskei")
+"""
+
+# Using build_tree() function at the top of page
+values = [(3, "Monstera"), (1, "Pothos"), (5, "Witchcraft Orchid"), None, (2, "Spider Plant"), (4, "Hoya Motoskei")]
+collection = build_tree(values)
+
+print(sort_plants(collection))
+
+# Example Output:
+# [(1, 'Pothos'), (2, 'Spider Plant'), (3, 'Monstera'), (4, 'Hoya Motoskei'), (5, 'Witchcraft Orchid')]
