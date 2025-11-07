@@ -52,7 +52,15 @@ def build_tree(values):
   return root
          
 def count_odd_splits(root):
-    pass
+    if root is None:
+        return 0
+    
+    count = 1 if root.val % 2 == 1 else 0
+    
+    count += count_odd_splits(root.left)
+    count += count_odd_splits(root.right)
+    
+    return count
 
 # Example Usage:
 r"""
@@ -102,7 +110,14 @@ class TreeNode():
          self.right = right
          
 def find_flower(inventory, name):
-    pass
+    if inventory is None:
+        return False
+    if inventory.val == name:
+        return True
+    elif name < inventory.val:
+        return find_flower(inventory.left, name)
+    else:
+        return find_flower(inventory.right, name)
 
 # Example Usage:
 r"""
@@ -127,7 +142,6 @@ print(find_flower(garden, "Sunflower"))
 
 
 # Problem 3: Flower Finding II
-
 
 """
 Consider the following function non_bst_find_flower() which accepts 
@@ -154,10 +168,8 @@ class TreeNode:
 def non_bst_find_flower(root, name):
     if root is None:
         return False
-    
     if root.val == name:
         return True
-
     return non_bst_find_flower(root.left, name) or non_bst_find_flower(root.right, name)
 
 # Example Usage:
@@ -206,7 +218,7 @@ class TreeNode:
         self.val = value
         self.left = left
         self.right = right
-        
+
 def print_tree(root):
     if not root:
         return "Empty"
@@ -226,7 +238,15 @@ def print_tree(root):
 
 
 def add_plant(collection, name):
-    pass
+    if collection is None:
+        return TreeNode(name)
+    
+    if name < collection.val:
+        collection.left = add_plant(collection.left, name)
+    else:  # name >= collection.val
+        collection.right = add_plant(collection.right, name)
+    
+    return collection
 
 # Example Usage:
 r"""
