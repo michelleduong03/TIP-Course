@@ -329,3 +329,62 @@ print(sort_plants(collection))
 
 # Example Output:
 # [(1, 'Pothos'), (2, 'Spider Plant'), (3, 'Monstera'), (4, 'Hoya Motoskei'), (5, 'Witchcraft Orchid')]
+
+
+
+# Problem 6: Finding a New Plant Within Budget
+
+"""
+You are looking for a new plant and have a max budget. The plant store 
+that you are shopping at stores their inventory in a BST where each node 
+has a key representing the price of the plant and value contains the plant's 
+name. Plants are ordered by their prices. You want to find a plant that is 
+close to but lower than your budget.
+
+Given the root of the BST inventory and an integer budget, write a function 
+pick_plant() that returns the plant with the highest price below budget. If no 
+plant with a price strictly below budget exists, the function should return None.
+"""
+class TreeNode:
+    def __init__(self, key, val, left=None, right=None):
+        self.key = key      # Plant price
+        self.val = val      # Plant name
+        self.left = left
+        self.right = right
+
+def pick_plant(inventory, budget):
+    result = None
+    node = inventory
+    
+    while node:
+        if node.key < budget:
+            result = node.val  # candidate
+            node = node.right  # try to find closer price below budget
+        else:
+            node = node.left  # price too high, go left
+    
+    return result
+
+# Example Usage:
+r"""
+               (50, "Fiddle Leaf Fig")
+             /                       \
+    (25, "Monstera")           (70, "Snake Plant")
+       /        \                   /         \
+(15, "Aloe")  (40, "Pothos")  (60, "Fern")  (80, "ZZ Plant")
+"""
+
+# Using build_tree() function at the top of page
+values = [(50, "Fiddle Leaf Fig"), (25, "Monstera"), (70, "Snake Plant"), (15, "Aloe"), 
+            (40, "Pothos"), (60, "Fern"), (80, "ZZ Plant")]
+inventory = build_tree(values)
+
+print(pick_plant(inventory, 50)) 
+print(pick_plant(inventory, 25)) 
+print(pick_plant(inventory, 15)) 
+
+# Example Output:
+
+# Pothos
+# Aloe
+# None
