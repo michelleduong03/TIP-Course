@@ -450,8 +450,8 @@ def remove_plant(collection, name):
         collection.left = remove_plant(collection.left, predecessor.val)
     
     return collection
-# Example Usage:
 
+# Example Usage:
 r"""
               Money Tree
              /         \
