@@ -77,9 +77,20 @@ def build_tree(values):
   return root
 
 def merge_orders(order1, order2):
-    pass
-# Example Usage:
+    if not order1 and not order2:
+        return None
+    if not order1:
+        return order2
+    if not order2:
+        return order1
+    
+    merged = TreeNode(order1.val + order2.val)
+    merged.left = merge_orders(order1.left, order2.left)
+    merged.right = merge_orders(order1.right, order2.right)
+    return merged
 
+
+# Example Usage:
 # Example 'order1' and 'order2' trees and their merged result
 
 r"""
