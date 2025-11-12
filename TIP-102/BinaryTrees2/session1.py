@@ -150,7 +150,22 @@ class Puff():
         self.right = right
 
 def print_design(design):
-    pass
+    if not design:
+        print([])
+        return
+    
+    queue = deque([design])
+    result = []
+    
+    while queue:
+        node = queue.popleft()
+        result.append(node.val)
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    
+    print(result)
 
 # Example Usage:
 r"""
