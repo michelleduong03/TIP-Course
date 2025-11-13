@@ -210,7 +210,12 @@ class TreeNode():
         self.right = right
 
 def max_tiers(cake):
-    pass
+    if not cake:
+        return 0
+    
+    left_height = max_tiers(cake.left)
+    right_height = max_tiers(cake.right)
+    return 1 + max(left_height, right_height)
 
 # Example Usage:
 r"""
@@ -252,7 +257,23 @@ class TreeNode():
         self.right = right
 
 def max_tiers(cake):
-    pass
+    if not cake:
+        return 0
+    
+    queue = deque([cake])
+    tiers = 0
+    
+    while queue:
+        # Each iteration = one tier (level)
+        for _ in range(len(queue)):
+            node = queue.popleft()
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        tiers += 1  # finished one level
+    
+    return tiers
 
 # Example Usage:
 r"""
