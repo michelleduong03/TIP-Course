@@ -146,7 +146,29 @@ class TreeNode:
         self.right = right
 
 def sum_each_days_orders(orders):
-	pass
+    if not orders:
+        return []
+
+    result = []
+    queue = deque([orders])
+
+    while queue:
+        level_sum = 0
+        size = len(queue)
+
+        for _ in range(size):
+            node = queue.popleft()
+            level_sum += node.val
+
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+        result.append(level_sum)
+
+    return result
+
 
 # Example Usage:
 
