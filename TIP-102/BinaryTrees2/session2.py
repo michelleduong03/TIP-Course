@@ -66,7 +66,25 @@ def build_tree(values):
 
 
 def is_balanced(display):
-	pass
+    def height(node):
+        if not node:
+            return 0
+
+        left = height(node.left)
+        right = height(node.right)
+
+        # If either subtree already unbalanced, bubble up immediately
+        if left == -1 or right == -1:
+            return -1
+
+        # If difference > 1 → unbalanced
+        if abs(left - right) > 1:
+            return -1
+
+        return max(left, right) + 1
+
+    return height(display) != -1
+
 
 # Example Usage:
 
