@@ -188,3 +188,14 @@ print(sum_each_days_orders(orders))
 # Example Output:
 
 # [4, 8, 4]
+
+
+
+class TreeNode:
+    def __init__(self, value, left=None, right=None):
+        self.val = value
+        self.left = left
+        self.right = right
+
+def sweet_difference(chocolates):
+    pass
