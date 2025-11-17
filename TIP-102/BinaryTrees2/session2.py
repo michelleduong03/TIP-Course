@@ -190,7 +190,7 @@ print(sum_each_days_orders(orders))
 # [4, 8, 4]
 
 
-# problem 4
+# problem 3
 class TreeNode:
     def __init__(self, value, left=None, right=None):
         self.val = value
@@ -198,4 +198,23 @@ class TreeNode:
         self.right = right
 
 def sweet_difference(chocolates):
-    pass
+    levels = []
+
+    def dfs(node, depth):
+        if not node:
+            return
+        if len(levels) <= depth:
+            levels.append([])
+        levels[depth].append(node.val)
+        dfs(node.left, depth + 1)
+        dfs(node.right, depth + 1)
+
+    dfs(chocolates, 0)
+
+    res = []
+    for vals in levels:
+        if len(vals) == 1:
+            res.append(0)
+        else:
+            res.append(max(vals) - min(vals))
+    return res
