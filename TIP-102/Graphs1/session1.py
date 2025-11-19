@@ -54,7 +54,12 @@ exists a flight from destination j to destination i. Return False otherwise.
 """
 
 def bidirectional_flights(flights):
-    pass
+    for i in range(len(flights)):
+        for j in flights[i]:
+            if i not in flights[j]:
+                return False
+    return True
+
 
 # Example Usage:
 
