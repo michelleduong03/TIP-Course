@@ -20,7 +20,12 @@ DFW ----- ATL
 """
 # No starter code is provided for this problem
 # Add your code here
-
+flights = {
+    "JFK": ["LAX", "DFW"],
+    "LAX": ["JFK"],
+    "DFW": ["ATL", "JFK"],
+    "ATL": ["DFW"]
+}
 
 # Example Usage:
 
