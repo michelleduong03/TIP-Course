@@ -130,7 +130,22 @@ is an array denoting there is a flight from city a to each city in adj_dict[a].
 """
 
 def get_adj_dict(flights):
-    pass
+    adj_dict = {}
+
+    for a, b in flights:
+        # Make sure a is in dictionary
+        if a not in adj_dict:
+            adj_dict[a] = []
+        # Make sure b is in dictionary
+        if b not in adj_dict:
+            adj_dict[b] = []
+
+        # Add each direction because flights are bidirectional
+        adj_dict[a].append(b)
+        adj_dict[b].append(a)
+
+    return adj_dict
+
 
 # Example Usage:
 
