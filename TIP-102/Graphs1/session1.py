@@ -84,7 +84,6 @@ print(bidirectional_flights(flights2))
 
 # Problem 3: Finding Direct Flights
 
-
 """
 Given an adjacency matrix flights of size n x n where each of the n nodes in the 
 graph represent a distinct destination and n[i][j] = 1 indicates that there exists 
