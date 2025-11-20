@@ -183,7 +183,15 @@ connecting the center node ot every other node.
 """
 
 def find_center(terminals):
-    pass
+    # Look at the first two edges
+    a, b = terminals[0]
+    c, d = terminals[1]
+
+    # The center must be the repeated node
+    if a == c or a == d:
+        return a
+    else:
+        return b
 
 # Example Usage:
 
