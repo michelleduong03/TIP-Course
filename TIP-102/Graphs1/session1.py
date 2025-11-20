@@ -96,7 +96,11 @@ A customer can reach a destination on a direct flight if that destination is a n
 """
 
 def get_direct_flights(flights, source):
-    pass
+    direct_destinations = []
+    for i in range(len(flights[source])):
+        if flights[source][i] == 1:
+            direct_destinations.append(i)
+    return direct_destinations
 
 # Example Usage:
 
